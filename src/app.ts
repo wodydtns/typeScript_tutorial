@@ -1,16 +1,30 @@
-//classes
-class Invoice {
-    
+//interface
+interface IsPerson {
+    name : string;
+    age:number;
+    speak(a:string):void;
+    spend(a:number):number;
+}
 
-    constructor(
-        readonly client:string, // 읽기만 가능
-        private details:string, // 클래스 내부에서만 사용(java private와 동일)
-        public amount:number // public이 기본 값
-    ){}
-    format(){
-        return `${this.client} owes ${this.amount} for ${this.details}`
+const me:IsPerson = {
+    name:'shaun',
+    age:30,
+    speak(text:string):void{
+        console.log(text);
+    },
+    spend(amount:number):number{
+        console.log(`I Spend ${amount}`);
+        return amount;
     }
 }
+
+console.log(me);
+
+const greetPerson = (person:IsPerson)=>{
+    console.log(`hello ${person.name}`);
+}
+
+import {Invoice} from './classes/invoice.js';
 const invOne = new Invoice('mario','work on the mario website',250);
 const invTwo = new Invoice('luigi','work on the luigi website',300);
 
